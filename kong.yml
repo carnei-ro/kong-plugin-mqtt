@@ -1,0 +1,32 @@
+---
+_format_version: "1.1"
+
+# _transform: true
+
+routes:
+  - name: mqtt
+    paths:
+      - /
+    plugins:
+      - name: mqtt
+        config:
+          mqtt_host: emqx
+          mqtt_port: 8883
+          mqtt_ssl_enabled: true
+          mqtt_topic: kong/my-topic
+          mqtt_qos: 1
+          mqtt_version: 5
+          mqtt_retain: false
+      #     path_as_topic: true
+      # - name: request-transformer
+      #   config:
+      #     replace:
+      #       uri: /kong/request-transformer/bar
+
+plugins:
+  - name: prometheus
+    # config:
+    #   status_code_metrics: true
+    #   latency_metrics: true
+    #   bandwidth_metrics: true
+    #   upstream_health_metrics: true
